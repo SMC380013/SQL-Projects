@@ -13,7 +13,8 @@ CREATE TABLE dept_emp (
     emp_no INTEGER,
     dept_no VARCHAR NOT NULL,
     from_date VARCHAR NOT NULL,
-    to_date VARCHAR NOT NULL
+    to_date VARCHAR NOT NULL,
+	FOREIGN KEY (dept_no) REFERENCES departments(dept_no)
 );
 
 CREATE TABLE dept_manager (
@@ -24,7 +25,7 @@ CREATE TABLE dept_manager (
 );
 
 CREATE TABLE employees (
-    emp_no INTEGER,
+    emp_no INTEGER PRIMARY KEY,
     birth_date VARCHAR NOT NULL,
     first_name VARCHAR NOT NULL,
     last_name VARCHAR NOT NULL,
@@ -33,17 +34,19 @@ CREATE TABLE employees (
 );
 
 CREATE TABLE salaries (
-    emp_no INTEGER,
+    emp_no INTEGER PRIMARY KEY,
     salary INTEGER NOT NULL,
     from_date VARCHAR NOT NULL,
-    to_date VARCHAR NOT NULL
+    to_date VARCHAR NOT NULL,
+	FOREIGN KEY (emp_no) REFERENCES employees(emp_no)
 );
 
 CREATE TABLE titles (
     emp_no INTEGER,
     title VARCHAR NOT NULL,
     from_date VARCHAR NOT NULL,
-    to_date VARCHAR NOT NULL
+    to_date VARCHAR NOT NULL,
+	FOREIGN KEY (emp_no) REFERENCES employees(emp_no)
 );
 
 SELECT * FROM departments;
